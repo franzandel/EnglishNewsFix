@@ -13,7 +13,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilder {
     @ActivityScope
-    @ContributesAndroidInjector(modules = [(NewsModule::class),
-        (CommonFragmentBuilder::class)])
+    @ContributesAndroidInjector(modules = [(NewsModule::class)])
     internal abstract fun bindNewsActivity(): NewsActivity
 }

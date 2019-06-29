@@ -22,6 +22,12 @@ class NewsModule {
         return ActivityNavigation(newsActivity)
     }
 
+    @Provides
+    @ActivityScope
+    fun provideNewsPresenter(mEnglishNewsRepository: EnglishNewsRepository): NewsPresenter {
+        return NewsPresenter(mEnglishNewsRepository)
+    }
+
     /*@Provides
     @ActivityScope
     internal fun provideEnglishNewsRepository(newsNetworkService: NewsNetworkService) : EnglishNewsRepository {

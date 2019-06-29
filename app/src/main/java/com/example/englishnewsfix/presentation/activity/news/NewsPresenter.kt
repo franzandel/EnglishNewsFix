@@ -10,11 +10,11 @@ import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
 class NewsPresenter
-@Inject constructor(private var mEnglishNewsRepository: EnglishNewsRepository,
+@Inject constructor(private var mEnglishNewsRepository: EnglishNewsRepository
                     /*private var mTunaikuSession: TunaikuSession,
                     private var mProfileDataModel: ProfileDataModel,
                     private var mLaonDataModel: LoanDataModel,*/
-                    val mGson: Gson
+//                    val mGson: Gson
                     ) : NewsContract.UserActionListener {
 
     lateinit var mView: NewsContract.View
