@@ -45,3 +45,37 @@
         app:layout_constraintStart_toStartOf="@+id/recyclerView_news"
         app:layout_constraintTop_toTopOf="@+id/appbar_login" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="11dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="11dp">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avNewsLoadingIndicator"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            app:indicatorColor="#FF248ec2"
+            app:indicatorName="BallSpinFadeLoaderIndicator" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</LinearLayout>-->

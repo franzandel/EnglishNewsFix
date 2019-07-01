@@ -2,11 +2,8 @@ package com.example.englishnewsfix.presentation.activity.news
 
 import com.example.englishnewsfix.data.entities.News
 import com.example.englishnewsfix.data.repository.EnglishNewsRepository
-import com.google.gson.Gson
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.subscribers.DisposableSubscriber
 import javax.inject.Inject
 
 class NewsPresenter
@@ -25,11 +22,11 @@ class NewsPresenter
 
     override fun fetchDataFromApi() {
         mView.showProgressBar()
-        /*mView.getCompositeDisposable().add(
+        mView.getCompositeDisposable().add(
             mEnglishNewsRepository.getNewsRepo(mEnglishNewsRepository.requestAPIKey())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { news-> processNewsDataFromDB(news)}*/
+                .subscribe { news-> processNewsDataFromDB(news)})
                 /*.subscribeWith(object : DisposableSubscriber<News>() {
                     override fun onNext(profile: News) {
                         mTunaikuSession.saveKtp(profile.pin!!)
@@ -51,10 +48,11 @@ class NewsPresenter
         processLoanDataFromDB(mLaonDataModel.selectAllDataDesc())
     }*/
 
-    override fun processNewsDataFromDB(newsList: List<News>) {
-        if (newsList.isNotEmpty()) {
-            mView.setAdapter(newsList)
-        }
+    override fun processNewsDataFromDB(news: News) {
+//        if (news.isNotEmpty()) {
+//            mView.setAdapter(news)
+//        }
+        mView.setAdapter(news)
 
         mView.hideProgressBar()
     }

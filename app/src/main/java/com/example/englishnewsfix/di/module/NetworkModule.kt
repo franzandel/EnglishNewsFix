@@ -2,6 +2,7 @@ package com.example.englishnewsfix.di.module
 
 import android.content.Context
 import com.example.englishnewsfix.BuildConfig
+import com.example.englishnewsfix.data.network.NewsNetworkService
 import com.google.gson.GsonBuilder
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.Module
@@ -63,5 +64,11 @@ class NetworkModule(private val context: Context) {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
         return builder.build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsNetworkService(@Named("news_rest") restAdapter: Retrofit): NewsNetworkService {
+        return restAdapter.create<NewsNetworkService>(NewsNetworkService::class.java)
     }
 }

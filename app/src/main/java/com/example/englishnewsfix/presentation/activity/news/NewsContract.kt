@@ -10,7 +10,7 @@ class NewsContract {
         fun showProgressBar()
         fun hideProgressBar()
         fun showError(msg: String)
-        fun setAdapter(newsList: List<News>)
+        fun setAdapter(news: News)
         fun getCompositeDisposable(): CompositeDisposable
         /*fun onBack()
         fun showKtpLayout()
@@ -33,7 +33,7 @@ class NewsContract {
     interface UserActionListener{
         fun setView(view: View)
         fun fetchDataFromApi()
-        fun processNewsDataFromDB(newsList: List<News>)
+        fun processNewsDataFromDB(news: News)
         /*fun submitLogin(noKtp: String?, noHp: String)
         fun isPhoneNumberValid(phoneNumber: String): Boolean?
         fun isKtpValid(noKtp: String): Boolean?

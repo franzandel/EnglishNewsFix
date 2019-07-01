@@ -2,6 +2,7 @@ package com.example.englishnewsfix.presentation.activity.news
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.englishnewsfix.R
 import com.example.englishnewsfix.data.entities.News
 import com.example.englishnewsfix.presentation.adapter.NewsRow
@@ -35,8 +36,15 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     }
 
-    override fun setAdapter(newsList: List<News>) {
-        val articlesCopy = newsList[0].articles.map {article ->
+    override fun setAdapter(news: News) {
+//        val articlesCopy = newsList[0].articles.map {article ->
+//            NewsRow(article)
+//        }
+//
+//        val distinctArticles = articlesCopy.distinctBy {newsRow ->
+//            newsRow.articles.source?.name
+//        }
+        val articlesCopy = news.articles.map {article ->
             NewsRow(article)
         }
 
@@ -49,7 +57,7 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
         newsAdapter.setOnItemClickListener { item, _->
             val newsRow = item as NewsRow
-            mActivityNavigation.navigateToArticlesPage(newsRow.articles.source?.name, newsList[0])
+            mActivityNavigation.navigateToArticlesPage(newsRow.articles.source?.name, news)
         }
     }
 
@@ -62,6 +70,7 @@ class NewsActivity : BaseActivity(), NewsContract.View {
     }
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
+        mNewsPresenter.mView = this
         setupUI()
     }
 
@@ -71,6 +80,7 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     fun setupUI() {
         setupToolbar()
+        setupRecyclerView()
         mNewsPresenter.fetchDataFromApi()
     }
 
@@ -81,5 +91,12 @@ class NewsActivity : BaseActivity(), NewsContract.View {
     fun setupToolbar() {
         //Setup
         tvToolbarTitle.text = resources.getString(R.string.news_toolbar_title)
+    }
+
+    fun setupRecyclerView() {
+        recyclerView_news.addItemDecoration(
+            DividerItemDecoration(
+                this, DividerItemDecoration.VERTICAL)
+        )
     }
 }

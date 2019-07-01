@@ -28,9 +28,9 @@ class NewsModule {
         return NewsPresenter(mEnglishNewsRepository)
     }
 
-    /*@Provides
+    @Provides
     @ActivityScope
     internal fun provideEnglishNewsRepository(newsNetworkService: NewsNetworkService) : EnglishNewsRepository {
         return EnglishNewsRepository(newsNetworkService)
-    }*/
+    }
 }

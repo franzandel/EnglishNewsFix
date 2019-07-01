@@ -13,7 +13,7 @@ import okhttp3.RequestBody
 import javax.inject.Inject
 
 class EnglishNewsRepository
-@Inject constructor(/*private var newsNetworkService: NewsNetworkService*/
+@Inject constructor(private var newsNetworkService: NewsNetworkService
                     /*var mLoanDataModel: LoanDataModel,
                     var mProfileDataModel: ProfileDataModel,
                     var mTunaikuSession: TunaikuSession,
@@ -27,11 +27,11 @@ class EnglishNewsRepository
      * Get News Data
      * @Param mXauth
      */
-    /*fun getNewsRepo(mXauth: String): Flowable<List<News>> {
+    fun getNewsRepo(mXauth: String): Flowable<News> {
         return newsNetworkService.getAllNews(mXauth)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-    }*/
+    }
 
     fun requestAPIKey(): String {
 //        return NewsNetworkService.API_KEY
