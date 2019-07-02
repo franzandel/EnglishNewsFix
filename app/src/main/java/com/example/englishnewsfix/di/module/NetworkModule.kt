@@ -15,26 +15,10 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
-/*const val url = "https://newsapi.org/v2/top-headlines?country=us" +
-                "&category=business" +
-                "&apiKey=f79d6965f8814037b1412eb6451944ba"*/
 const val baseUrl = "https://newsapi.org"
 
 @Module
 class NetworkModule(private val context: Context) {
-
-    /*@Provides
-    @Singleton
-    @Named("GetNews")
-    fun provideProvinceRestClient(okHttpClient: OkHttpClient): Retrofit {
-        val builder = Retrofit.Builder()
-        builder.client(okHttpClient)
-            .baseUrl(url)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-        return builder.build()
-    }*/
-
     @Provides
     @Singleton
     fun provideOkhttpClient(): OkHttpClient {

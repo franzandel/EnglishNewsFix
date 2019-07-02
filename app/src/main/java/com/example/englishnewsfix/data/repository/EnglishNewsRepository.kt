@@ -9,14 +9,7 @@ import javax.inject.Inject
 
 class EnglishNewsRepository
 @Inject constructor(private var newsNetworkService: NewsNetworkService
-                    /*var mLoanDataModel: LoanDataModel,
-                    var mProfileDataModel: ProfileDataModel,
-                    var mTunaikuSession: TunaikuSession,
-                    var mHelper: Helper,
-                    var mGson: Gson,
-                    val scheduler: SchedulerProvider*/) {
-
-    private var mAddress: String? = null
+                    ) {
 
     /**
      * Get News Data
@@ -29,7 +22,6 @@ class EnglishNewsRepository
     }
 
     fun requestAPIKey(): String {
-//        return NewsNetworkService.API_KEY
-        return "f79d6965f8814037b1412eb6451944ba"
+        return NewsNetworkService.API_KEY
     }
 }
