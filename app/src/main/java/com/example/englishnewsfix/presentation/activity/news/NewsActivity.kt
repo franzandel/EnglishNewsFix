@@ -22,7 +22,16 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     @Inject
     lateinit var mNewsPresenter: NewsPresenter
-    private val newsAdapter = GroupAdapter<ViewHolder>()
+    @Inject
+    lateinit var newsAdapter: GroupAdapter<ViewHolder>
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_news
+    }
+
+    override fun onActivityReady(savedInstanceState: Bundle?) {
+        setupUI()
+    }
 
     override fun showProgressBar() {
         avNewsLoadingIndicator?.visibility = View.VISIBLE
@@ -36,28 +45,16 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     }
 
-    override fun setAdapter(news: News) {
-//        val articlesCopy = newsList[0].articles.map {article ->
-//            NewsRow(article)
-//        }
-//
-//        val distinctArticles = articlesCopy.distinctBy {newsRow ->
-//            newsRow.articles.source?.name
-//        }
-        val articlesCopy = news.articles.map {article ->
-            NewsRow(article)
-        }
+    override fun setAdapterParameter(news: News) {
+        mNewsPresenter.setAdapterValue(news, newsAdapter)
+    }
 
-        val distinctArticles = articlesCopy.distinctBy {newsRow ->
-            newsRow.articles.source?.name
-        }
-
-        newsAdapter.addAll(distinctArticles)
+    override fun setAdapter(news: News, newsAdapter: GroupAdapter<ViewHolder>) {
         recyclerView_news.adapter = newsAdapter
 
         newsAdapter.setOnItemClickListener { item, _->
             val newsRow = item as NewsRow
-            mActivityNavigation.navigateToArticlesPage(newsRow.articles.source?.name, news)
+            mActivityNavigation.navigateToArticlesPage(newsRow.article.source?.name, news)
         }
     }
 
@@ -65,35 +62,27 @@ class NewsActivity : BaseActivity(), NewsContract.View {
         return mDisposables
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_news
-    }
-
-    override fun onActivityReady(savedInstanceState: Bundle?) {
-        mNewsPresenter.mView = this
-        setupUI()
-    }
-
     /**
      * Setup UI in the first Time when this activity Load
      * */
 
-    fun setupUI() {
+    private fun setupUI() {
         setupToolbar()
+        mNewsPresenter.setView(this)
         setupRecyclerView()
         mNewsPresenter.fetchDataFromApi()
     }
 
     /**
-     * Setup Toolbar for title and handling on back
+     * Setup Toolbar for title
      * */
 
-    fun setupToolbar() {
+    private fun setupToolbar() {
         //Setup
         tvToolbarTitle.text = resources.getString(R.string.news_toolbar_title)
     }
 
-    fun setupRecyclerView() {
+    private fun setupRecyclerView() {
         recyclerView_news.addItemDecoration(
             DividerItemDecoration(
                 this, DividerItemDecoration.VERTICAL)

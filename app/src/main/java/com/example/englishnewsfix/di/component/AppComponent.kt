@@ -1,9 +1,9 @@
 package com.example.englishnewsfix.di.component
 
 import android.app.Application
-import com.example.englishnewsfix.di.module.NetworkModule
 import com.example.englishnewsfix.EnglishNewsApp
 import com.example.englishnewsfix.di.module.AppModule
+import com.example.englishnewsfix.di.module.NetworkModule
 import com.example.englishnewsfix.di.module.builder.ActivityBuilder
 import dagger.BindsInstance
 import dagger.Component

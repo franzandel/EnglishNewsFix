@@ -4,7 +4,8 @@ import com.example.englishnewsfix.data.network.NewsNetworkService
 import com.example.englishnewsfix.data.repository.EnglishNewsRepository
 import com.example.englishnewsfix.di.scope.ActivityScope
 import com.example.englishnewsfix.presentation.common.navigationcontroller.ActivityNavigation
-import com.google.gson.Gson
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import dagger.Module
 import dagger.Provides
 
@@ -32,5 +33,11 @@ class NewsModule {
     @ActivityScope
     internal fun provideEnglishNewsRepository(newsNetworkService: NewsNetworkService) : EnglishNewsRepository {
         return EnglishNewsRepository(newsNetworkService)
+    }
+
+    @Provides
+    @ActivityScope
+    fun provideNewsAdapter(): GroupAdapter<ViewHolder> {
+        return GroupAdapter<ViewHolder>()
     }
 }

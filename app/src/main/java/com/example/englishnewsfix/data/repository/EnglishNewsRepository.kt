@@ -2,14 +2,9 @@ package com.example.englishnewsfix.data.repository
 
 import com.example.englishnewsfix.data.entities.News
 import com.example.englishnewsfix.data.network.NewsNetworkService
-import com.google.gson.Gson
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Function3
 import io.reactivex.schedulers.Schedulers
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import javax.inject.Inject
 
 class EnglishNewsRepository

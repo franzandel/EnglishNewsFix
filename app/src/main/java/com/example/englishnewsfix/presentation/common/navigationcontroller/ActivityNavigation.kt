@@ -7,7 +7,6 @@ import com.example.englishnewsfix.data.entities.News
 import com.example.englishnewsfix.presentation.activity.articles.ArticlesActivity
 import com.example.englishnewsfix.presentation.activity.news.NewsActivity.Companion.NEWS_KEY
 import com.example.englishnewsfix.presentation.activity.news.NewsActivity.Companion.SOURCE_NAME_KEY
-import java.io.Serializable
 import javax.inject.Inject
 
 /**

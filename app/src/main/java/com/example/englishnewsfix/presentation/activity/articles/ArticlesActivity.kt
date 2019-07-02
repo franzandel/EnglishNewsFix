@@ -1,15 +1,26 @@
 package com.example.englishnewsfix.presentation.activity.articles
 
 import android.os.Bundle
+import android.widget.SearchView
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.englishnewsfix.R
+import com.example.englishnewsfix.data.entities.News
+import com.example.englishnewsfix.presentation.activity.news.NewsActivity
 import com.example.englishnewsfix.presentation.common.BaseActivity
-import kotlinx.android.synthetic.main.activity_toolbar.*
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_articles.*
+import kotlinx.android.synthetic.main.activity_searchbar.*
+import kotlinx.android.synthetic.main.activity_toolbar.tvToolbarTitle
+import kotlinx.android.synthetic.main.activity_toolbar_back.*
 import javax.inject.Inject
 
 class ArticlesActivity : BaseActivity(), ArticlesContract.View {
-
-    /*@Inject
-    lateinit var mNewsPresenter: NewsPresenter*/
+    @Inject
+    lateinit var mArticlesPresenter: ArticlesPresenter
+    @Inject
+    lateinit var articlesAdapter: GroupAdapter<ViewHolder>
+    var mQuery = ""
 
     override fun getLayoutId(): Int {
         return R.layout.activity_articles
@@ -17,98 +28,72 @@ class ArticlesActivity : BaseActivity(), ArticlesContract.View {
 
     override fun onActivityReady(savedInstanceState: Bundle?) {
         setupUI()
+        setupIntentParameters()
+        mArticlesPresenter.setAdapterValue(articlesAdapter)
+    }
+
+    override fun setAdapter(articlesAdapter: GroupAdapter<ViewHolder>) {
+        recyclerView_articles.adapter = articlesAdapter
     }
 
     /**
      * Setup UI in the first Time when this activity Load
      * */
 
-    fun setupUI() {
+    private fun setupUI() {
         setupToolbar()
-        /*etLoginPhoneNumber.requestFocus()
-        //Setup Chat Us
-        tvLoginChatUs.setOnClickListener {
-            openChat()
-        }
-
-        btnLoginChatUs.setOnClickListener {
-            openChat()
-        }
-
-        //Handling Phone number on change state
-        etLoginPhoneNumber.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val mInput = s!!.toString()
-                if (mInput.isNotEmpty()) {
-                    mAnalytics.sendEventAnalytics("inp_phone_login_change")
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                etLoginPhoneNumber.error = null
-                etLoginKtp.error = null
-                layoutPhone.background = ContextCompat.getDrawable(applicationContext, R.drawable.cs_view_edittext_gray)
-            }
-
-        })
-
-        //Handling ktp on change state
-        etLoginKtp.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val mInput = s!!.toString()
-                if (mInput.isNotEmpty()) {
-                    mAnalytics.sendEventAnalytics("inp_noktp_login_change")
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                etLoginKtp.error = null
-                etLoginPhoneNumber.error = null
-                linearlayout_no_ktp.background = ContextCompat.getDrawable(applicationContext, R.drawable.cs_view_edittext_gray)
-            }
-
-        })
-        btnLogin.setOnClickListener {
-            mHelper.hideSoftKeyboard(this)
-            mNoHp = etLoginPhoneNumber.text.toString()
-            mKtp = etLoginKtp.text.toString()
-            if (mHelper.isNetworkConnected(applicationContext)) {
-                mAnalytics.sendEventAnalytics("btn_login_reqotp_click")
-                if (linearlayout_no_ktp.visibility == View.GONE) {
-                    mLoginPresenter.checkingData(null, etLoginPhoneNumber.text.toString())
-                } else {
-                    mLoginPresenter.checkingData(etLoginKtp.text.toString(), etLoginPhoneNumber.text.toString())
-                }
-            } else {
-                showSnackBar("Tidak dapat Login, pastikan internet kamu lancar")
-            }
-        }
-
-        //Setup Fb Page
-        btnLoginFb.setOnClickListener {
-            mActivityNavigation.openFacebookApp()
-        }
-
-        //Setup Twitter Page
-        btnLoginTwitter.setOnClickListener {
-            mActivityNavigation.openTwitterApp()
-        }*/
+        mArticlesPresenter.setView(this)
+        setupRecyclerView()
     }
 
     /**
-     * Setup Toolbar for title and handling on back
+     * Setup Toolbar for title, handling on back and SearchBar
      * */
 
-    fun setupToolbar() {
+    private fun setupToolbar() {
         //Setup
-        tvToolbarTitle.text = resources.getString(R.string.news_toolbar_title)
+        tvToolbarTitle.text = resources.getString(R.string.articles_toolbar_title)
+        btnToolbarBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                if (query != null && query.isNotEmpty()) {
+                    mQuery = query.trim().toLowerCase()
+                    mArticlesPresenter.searchData(query, articlesAdapter)
+                } else {
+                    mArticlesPresenter.resetAdapter(articlesAdapter)
+                }
+                return false
+            }
+        })
+
+        btnSearchAddress.setOnClickListener {
+            val query = searchBar.query.toString()
+
+            if (query.isNotEmpty()) {
+                mQuery = query.trim().toLowerCase()
+                mArticlesPresenter.searchData(query, articlesAdapter)
+            }
+        }
+    }
+
+    private fun setupRecyclerView() {
+        recyclerView_articles.addItemDecoration(
+            DividerItemDecoration(
+                this, DividerItemDecoration.VERTICAL)
+        )
+    }
+
+    private fun setupIntentParameters() {
+        val news = intent.getParcelableExtra<News>(NewsActivity.NEWS_KEY)
+        val sourceName = intent.getStringExtra(NewsActivity.SOURCE_NAME_KEY)
+
+        mArticlesPresenter.setIntentParameters(news, sourceName)
     }
 }

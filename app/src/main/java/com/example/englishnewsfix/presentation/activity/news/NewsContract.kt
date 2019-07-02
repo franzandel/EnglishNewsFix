@@ -1,8 +1,9 @@
 package com.example.englishnewsfix.presentation.activity.news
 
 import com.example.englishnewsfix.data.entities.News
-import com.example.englishnewsfix.presentation.adapter.NewsRow
 import com.example.englishnewsfix.presentation.common.BaseView
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import io.reactivex.disposables.CompositeDisposable
 
 class NewsContract {
@@ -10,35 +11,15 @@ class NewsContract {
         fun showProgressBar()
         fun hideProgressBar()
         fun showError(msg: String)
-        fun setAdapter(news: News)
+        fun setAdapterParameter(news: News)
+        fun setAdapter(news: News, newsAdapter: GroupAdapter<ViewHolder>)
         fun getCompositeDisposable(): CompositeDisposable
-        /*fun onBack()
-        fun showKtpLayout()
-        fun hideKtpLayout()
-        fun showLoginHelp()
-        fun showErrorPhoneNumber(errType : Int)
-        fun showErrorPhoneNumber(errMsg: String?)
-        fun showErrorKtpNumber(errMsg: String?)
-        fun showErrorKtpNumber(errType: Int?)
-        fun hideWordingLoginKtp()
-        fun showWordingLoginKtp(msg:String)
-        fun showSnackBar(msg :String)
-        fun errorInputField(layout:String, show:Boolean)
-        fun showLoading()
-        fun hideLoading()
-        fun openChat()
-        fun hideSoftKeyboard()*/
     }
 
     interface UserActionListener{
         fun setView(view: View)
         fun fetchDataFromApi()
         fun processNewsDataFromDB(news: News)
-        /*fun submitLogin(noKtp: String?, noHp: String)
-        fun isPhoneNumberValid(phoneNumber: String): Boolean?
-        fun isKtpValid(noKtp: String): Boolean?
-        fun handlingHttpErrorCode(err: Throwable)
-        fun checkingData(noKtp: String?, noHp: String?)
-        fun deleteAllRegistrationSectionData()*/
+        fun setAdapterValue(news: News, newsAdapter: GroupAdapter<ViewHolder>)
     }
 }

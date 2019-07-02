@@ -2,7 +2,6 @@ package com.example.englishnewsfix
 
 import android.app.Activity
 import android.app.Application
-import android.content.Context
 import com.example.englishnewsfix.di.component.AppComponent
 import com.example.englishnewsfix.di.component.DaggerAppComponent
 import com.example.englishnewsfix.di.module.NetworkModule

@@ -3,14 +3,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/coordinator_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".presentation.activity.news.NewsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_login"
+        android:id="@+id/appbar_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_login" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_news" />
 
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/avNewsLoadingIndicator"
@@ -43,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView_news"
         app:layout_constraintEnd_toEndOf="@+id/recyclerView_news"
         app:layout_constraintStart_toStartOf="@+id/recyclerView_news"
-        app:layout_constraintTop_toTopOf="@+id/appbar_login" />
+        app:layout_constraintTop_toTopOf="@+id/appbar_news" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--

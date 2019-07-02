@@ -7,19 +7,19 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.articles_row.view.*
 
-class ArticlesRow(private val articles: Article): Item<ViewHolder>() {
+class ArticlesRow(private val article: Article): Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.articles_row
     }
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.textView_username_Articles?.text = articles.title
-        viewHolder.itemView.textView_latestMessage_Articles?.text = articles.description
+        viewHolder.itemView.textView_username_Articles?.text = article.title
+        viewHolder.itemView.textView_latestMessage_Articles?.text = article.description
 
-        if (articles.urlToImage.equals(null))
+        if (article.urlToImage.equals(null))
             viewHolder.itemView.circleImageView_Articles.setBackgroundResource(android.R.drawable.star_big_on)
         else
-            Picasso.get().load(articles.urlToImage)
+            Picasso.get().load(article.urlToImage)
                 .into(viewHolder.itemView.circleImageView_Articles)
     }
 }

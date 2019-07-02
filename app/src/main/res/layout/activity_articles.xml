@@ -3,14 +3,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/coordinator_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".presentation.activity.news.NewsActivity">
+        tools:context=".presentation.activity.articles.ArticlesActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_login"
+        android:id="@+id/appbar_articles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,15 +17,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include layout="@layout/activity_toolbar_back" />
+
+        <include layout="@layout/activity_searchbar" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_news"
+        android:id="@+id/recyclerView_articles"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_login" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_articles" />
 </androidx.constraintlayout.widget.ConstraintLayout>

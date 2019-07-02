@@ -2,7 +2,8 @@ package com.example.englishnewsfix.data.network
 
 import com.example.englishnewsfix.data.entities.News
 import io.reactivex.Flowable
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface NewsNetworkService {
     companion object {

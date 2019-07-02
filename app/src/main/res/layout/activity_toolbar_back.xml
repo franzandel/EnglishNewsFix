@@ -2,15 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activityToolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/loan_application_topbar_background_new"
+    android:background="@drawable/news_application_topbar_background_new"
     android:orientation="horizontal"
     android:paddingStart="0dp"
-    android:paddingLeft="0dp"
-    android:paddingEnd="15dp"
-    android:paddingRight="15dp">
+    android:paddingEnd="15dp">
 
     <ImageButton
         android:id="@+id/btnToolbarBack"

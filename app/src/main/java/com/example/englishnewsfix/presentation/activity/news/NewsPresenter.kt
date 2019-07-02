@@ -2,16 +2,15 @@ package com.example.englishnewsfix.presentation.activity.news
 
 import com.example.englishnewsfix.data.entities.News
 import com.example.englishnewsfix.data.repository.EnglishNewsRepository
-import io.reactivex.schedulers.Schedulers
+import com.example.englishnewsfix.presentation.adapter.NewsRow
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class NewsPresenter
 @Inject constructor(private var mEnglishNewsRepository: EnglishNewsRepository
-                    /*private var mTunaikuSession: TunaikuSession,
-                    private var mProfileDataModel: ProfileDataModel,
-                    private var mLaonDataModel: LoanDataModel,*/
-//                    val mGson: Gson
                     ) : NewsContract.UserActionListener {
 
     lateinit var mView: NewsContract.View
@@ -27,33 +26,23 @@ class NewsPresenter
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { news-> processNewsDataFromDB(news)})
-                /*.subscribeWith(object : DisposableSubscriber<News>() {
-                    override fun onNext(profile: News) {
-                        mTunaikuSession.saveKtp(profile.pin!!)
-                        fetchLoanAndProfileAPI(xAuth, profile.pin!!)
-                        mView.hideProgressBar()
-                    }
-
-                    override fun onError(t: Throwable) {
-                        mView.hideProgressBar()
-                    }
-
-                    override fun onComplete() {
-
-                    }
-                }*/
     }
 
-    /*override fun processData() {
-        processLoanDataFromDB(mLaonDataModel.selectAllDataDesc())
-    }*/
-
     override fun processNewsDataFromDB(news: News) {
-//        if (news.isNotEmpty()) {
-//            mView.setAdapter(news)
-//        }
-        mView.setAdapter(news)
-
+        mView.setAdapterParameter(news)
         mView.hideProgressBar()
+    }
+
+    override fun setAdapterValue(news: News, newsAdapter: GroupAdapter<ViewHolder>) {
+        val articlesCopy = news.articles.map {article ->
+            NewsRow(article)
+        }
+
+        val distinctArticles = articlesCopy.distinctBy {newsRow ->
+            newsRow.article.source?.name
+        }
+
+        newsAdapter.addAll(distinctArticles)
+        mView.setAdapter(news, newsAdapter)
     }
 }
