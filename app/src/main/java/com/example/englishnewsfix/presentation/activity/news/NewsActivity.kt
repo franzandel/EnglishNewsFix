@@ -2,6 +2,7 @@ package com.example.englishnewsfix.presentation.activity.news
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.englishnewsfix.R
 import com.example.englishnewsfix.data.entities.News
@@ -9,7 +10,6 @@ import com.example.englishnewsfix.presentation.adapter.NewsRow
 import com.example.englishnewsfix.presentation.common.BaseActivity
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_news.*
 import kotlinx.android.synthetic.main.activity_toolbar.*
 import javax.inject.Inject
@@ -42,7 +42,7 @@ class NewsActivity : BaseActivity(), NewsContract.View {
     }
 
     override fun showError(msg: String) {
-
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
     override fun setAdapterParameter(news: News) {
@@ -58,8 +58,9 @@ class NewsActivity : BaseActivity(), NewsContract.View {
         }
     }
 
-    override fun getCompositeDisposable(): CompositeDisposable {
-        return mDisposables
+    override fun onDestroy() {
+        mNewsPresenter.detachView()
+        super.onDestroy()
     }
 
     /**

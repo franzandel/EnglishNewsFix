@@ -42,7 +42,6 @@ class ArticlesActivity : BaseActivity(), ArticlesContract.View {
 
     private fun setupUI() {
         setupToolbar()
-//        mArticlesPresenter.setView(this)
         mArticlesPresenter.attachView(this)
         setupRecyclerView()
     }

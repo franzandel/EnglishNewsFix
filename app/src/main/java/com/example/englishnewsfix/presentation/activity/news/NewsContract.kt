@@ -13,12 +13,12 @@ class NewsContract {
         fun showError(msg: String)
         fun setAdapterParameter(news: News)
         fun setAdapter(news: News, newsAdapter: GroupAdapter<ViewHolder>)
-        fun getCompositeDisposable(): CompositeDisposable
     }
 
     interface UserActionListener{
         fun fetchDataFromApi()
-        fun processNewsDataFromDB(news: News)
+        fun onSuccessFetchData(news: News)
+        fun onFailedFetchData(errMsg: String?)
         fun setAdapterValue(news: News, newsAdapter: GroupAdapter<ViewHolder>)
     }
 }

@@ -19,15 +19,23 @@ class NewsPresenter
 
     override fun fetchDataFromApi() {
         view?.showProgressBar()
-        view?.getCompositeDisposable()?.add(
-            mEnglishNewsRepository.getNewsRepo(mEnglishNewsRepository.requestAPIKey())
-                .subscribeOn(scheduler.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { news-> processNewsDataFromDB(news)})
+        addDisposable(mEnglishNewsRepository.getNewsRepo(mEnglishNewsRepository.requestAPIKey())
+            .subscribeOn(scheduler.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({ news ->
+                onSuccessFetchData(news)
+            }, { err ->
+                onFailedFetchData(err.message)
+            }))
     }
 
-    override fun processNewsDataFromDB(news: News) {
+    override fun onSuccessFetchData(news: News) {
         view?.setAdapterParameter(news)
+        view?.hideProgressBar()
+    }
+
+    override fun onFailedFetchData(errMsg: String?) {
+        view?.showError(errMsg!!)
         view?.hideProgressBar()
     }
 
