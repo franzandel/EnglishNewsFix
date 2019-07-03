@@ -1,9 +1,11 @@
 package com.example.englishnewsfix.presentation.common
 
+import com.example.englishnewsfix.external.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-open class BasePresenter<V : BaseView> : IBasePresenter<V>{
+open class BasePresenter<V : BaseView>
+constructor(var scheduler: SchedulerProvider): IBasePresenter<V>{
     var view : V? = null
 
     private val mCompositeDisposable by lazy {

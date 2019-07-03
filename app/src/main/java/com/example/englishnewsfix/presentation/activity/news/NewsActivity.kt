@@ -68,7 +68,7 @@ class NewsActivity : BaseActivity(), NewsContract.View {
 
     private fun setupUI() {
         setupToolbar()
-        mNewsPresenter.setView(this)
+        mNewsPresenter.attachView(this)
         setupRecyclerView()
         mNewsPresenter.fetchDataFromApi()
     }

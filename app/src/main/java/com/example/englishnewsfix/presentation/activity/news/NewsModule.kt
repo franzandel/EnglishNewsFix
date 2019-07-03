@@ -2,6 +2,7 @@ package com.example.englishnewsfix.presentation.activity.news
 
 import com.example.englishnewsfix.data.repository.EnglishNewsRepository
 import com.example.englishnewsfix.di.scope.ActivityScope
+import com.example.englishnewsfix.external.AppSchedulerProvider
 import com.example.englishnewsfix.presentation.common.navigationcontroller.ActivityNavigation
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
@@ -18,8 +19,10 @@ class NewsModule {
 
     @Provides
     @ActivityScope
-    fun provideNewsPresenter(mEnglishNewsRepository: EnglishNewsRepository): NewsPresenter {
-        return NewsPresenter(mEnglishNewsRepository)
+    fun provideNewsPresenter(mEnglishNewsRepository: EnglishNewsRepository,
+                             appSchedulerProvider: AppSchedulerProvider
+                            ): NewsPresenter {
+        return NewsPresenter(mEnglishNewsRepository, appSchedulerProvider)
     }
 
     @Provides

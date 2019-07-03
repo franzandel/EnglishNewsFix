@@ -11,7 +11,6 @@ class ArticlesContract {
     }
 
     interface UserActionListener{
-        fun setView(view: View)
         fun setIntentParameters(news: News, sourceName: String)
         fun setAdapterValue(articlesAdapter: GroupAdapter<ViewHolder>)
         fun resetAdapter(articlesAdapter: GroupAdapter<ViewHolder>)

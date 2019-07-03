@@ -17,7 +17,6 @@ class NewsContract {
     }
 
     interface UserActionListener{
-        fun setView(view: View)
         fun fetchDataFromApi()
         fun processNewsDataFromDB(news: News)
         fun setAdapterValue(news: News, newsAdapter: GroupAdapter<ViewHolder>)
