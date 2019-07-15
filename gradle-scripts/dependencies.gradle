@@ -24,6 +24,8 @@ ext {
     jUnitVersion = '4.12'
     runnerVersion = '1.2.0'
     espressoVersion = '3.2.0'
+    mockitoVersion = '2.10.0'
+    mockitoKotlinVersion = '1.5.0'
 
     /**
      * Library Package
@@ -48,6 +50,8 @@ ext {
     jUnitPackage = 'junit'
     testPackage = 'androidx.test'
     espressoPackage = 'androidx.test.espresso'
+    mockitoPackage = 'org.mockito'
+    mockitoKotlinPackage = 'com.nhaarman'
 
 
     /**
@@ -138,6 +142,8 @@ ext {
 
     jUnit = buildDependency(jUnitPackage, 'junit', jUnitVersion)
     androidRunner = buildDependency(testPackage, 'runner', runnerVersion)
+    mockito = buildDependency(mockitoPackage, 'mockito-core', mockitoVersion)
+    mockitoKotlin = buildDependency(mockitoKotlinPackage, 'mockito-kotlin-kt1.1', mockitoKotlinVersion)
 }
 
 /**

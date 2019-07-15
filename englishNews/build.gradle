@@ -34,4 +34,12 @@ dependencies {
 
     //AVLoadingIndicatorView
     implementation aviLoadingIndicator
+
+    // Android Test Library
+    testImplementation jUnit
+    androidTestImplementation androidRunner
+    androidTestImplementation espressoDependencies.espressoCore
+    androidTestImplementation mockito
+    testImplementation mockito
+    testImplementation mockitoKotlin
 }

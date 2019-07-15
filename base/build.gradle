@@ -32,9 +32,4 @@ dependencies {
 
     // Groupie Adapter Library
     api groupie
-
-    // Android Test Library
-    testImplementation jUnit
-    androidTestImplementation androidRunner
-    androidTestImplementation espressoDependencies.espressoCore
 }
