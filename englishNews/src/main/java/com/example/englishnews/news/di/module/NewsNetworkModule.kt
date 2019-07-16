@@ -1,8 +1,8 @@
-package com.example.feature.news.di.module
+package com.example.englishnews.news.di.module
 
 import com.example.base.di.module.BaseNetworkModule
 import com.example.base.di.scope.ActivityScope
-import com.example.feature.news.data.network.NewsNetworkService
+import com.example.englishnews.news.data.network.NewsNetworkService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

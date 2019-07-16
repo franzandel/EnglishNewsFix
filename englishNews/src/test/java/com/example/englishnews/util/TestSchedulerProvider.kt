@@ -1,6 +1,6 @@
 package com.example.englishnews.util
 
-import com.example.base.scheduler.SchedulerProvider
+import com.example.base.external.scheduler.SchedulerProvider
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.TestScheduler
 

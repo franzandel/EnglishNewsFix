@@ -1,11 +1,11 @@
-package com.example.feature.news.domain.router
+package com.example.englishnews.news.domain.router
 
 import android.content.Context
 import android.content.Intent
 import com.example.feature.news.data.response.News
 import com.example.feature.news.presentation.activity.contract.NewsContract
-import com.example.feature.news.presentation.activity.view.NewsActivity.Companion.NEWS_KEY
-import com.example.feature.news.presentation.activity.view.NewsActivity.Companion.SOURCE_NAME_KEY
+import com.example.englishnews.news.presentation.activity.view.NewsActivity.Companion.NEWS_KEY
+import com.example.englishnews.news.presentation.activity.view.NewsActivity.Companion.SOURCE_NAME_KEY
 import com.example.base.presentation.router.ScreenRouter
 import javax.inject.Inject
 

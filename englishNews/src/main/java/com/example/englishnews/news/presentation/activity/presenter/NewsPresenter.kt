@@ -1,11 +1,12 @@
-package com.example.feature.news.presentation.activity.presenter
+package com.example.englishnews.news.presentation.activity.presenter
 
+import com.example.base.external.constant.AppConstants
 import com.example.feature.news.data.response.News
-import com.example.base.scheduler.SchedulerProvider
+import com.example.base.external.scheduler.SchedulerProvider
 import com.example.feature.news.presentation.activity.contract.NewsContract
 import com.example.feature.news.external.NewsRow
 import com.example.base.presentation.presenter.BasePresenter
-import com.example.feature.news.domain.usecase.NewsUseCase
+import com.example.englishnews.news.domain.usecase.NewsUseCase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import javax.inject.Inject
@@ -19,7 +20,7 @@ class NewsPresenter
     override fun fetchDataFromApi() {
         view?.showProgressBar()
         addDisposable(
-            newsUseCase.getNewsRepo(newsUseCase.requestAPIKey())
+            newsUseCase.getNewsRepo(AppConstants.NewsAPI.API_KEY)
                 .subscribe ({ news ->
                     onSuccessFetchData(news)
                 }, { err ->

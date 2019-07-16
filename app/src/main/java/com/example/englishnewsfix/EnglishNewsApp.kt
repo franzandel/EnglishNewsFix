@@ -1,8 +1,8 @@
-package com.example.englishnewsfix.app
+package com.example.englishnewsfix
 
 import android.app.Activity
 import android.app.Application
-import com.example.englishnewsfix.app.di.component.AppComponent
+import com.example.englishnewsfix.di.component.AppComponent
 import com.example.englishnewsfix.app.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector

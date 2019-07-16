@@ -1,8 +1,8 @@
-package com.example.feature.articles.presentation.activity.presenter
+package com.example.englishnews.articles.presentation.activity.presenter
 
-import com.example.feature.articles.presentation.activity.contract.ArticlesContract
+import com.example.englishnews.articles.presentation.activity.contract.ArticlesContract
 import com.example.feature.news.data.response.News
-import com.example.base.scheduler.SchedulerProvider
+import com.example.base.external.scheduler.SchedulerProvider
 import com.example.feature.articles.external.ArticlesRow
 import com.example.base.presentation.presenter.BasePresenter
 import com.xwray.groupie.GroupAdapter

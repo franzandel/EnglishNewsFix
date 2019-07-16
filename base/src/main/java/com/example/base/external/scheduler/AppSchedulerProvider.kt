@@ -1,4 +1,4 @@
-package com.example.base.scheduler
+package com.example.base.external.scheduler
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers

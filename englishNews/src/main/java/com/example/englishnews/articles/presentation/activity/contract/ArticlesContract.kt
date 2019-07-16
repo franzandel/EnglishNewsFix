@@ -1,4 +1,4 @@
-package com.example.feature.articles.presentation.activity.contract
+package com.example.englishnews.articles.presentation.activity.contract
 
 import com.example.feature.news.data.response.News
 import com.example.base.presentation.view.BaseView

@@ -1,13 +1,13 @@
-package com.example.feature.news.presentation.activity.view
+package com.example.englishnews.news.presentation.activity.view
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.feature.news.data.response.News
-import com.example.feature.news.domain.router.NewsRouter
+import com.example.englishnews.news.domain.router.NewsRouter
 import com.example.feature.news.presentation.activity.contract.NewsContract
-import com.example.feature.news.presentation.activity.presenter.NewsPresenter
+import com.example.englishnews.news.presentation.activity.presenter.NewsPresenter
 import com.example.feature.news.external.NewsRow
 import com.example.base.presentation.activity.BaseActivity
 import com.example.feature.R

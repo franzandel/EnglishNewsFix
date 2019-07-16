@@ -1,12 +1,12 @@
-package com.example.feature.articles.presentation.activity.view
+package com.example.englishnews.articles.presentation.activity.view
 
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
-import com.example.feature.articles.presentation.activity.contract.ArticlesContract
+import com.example.englishnews.articles.presentation.activity.contract.ArticlesContract
 import com.example.feature.news.data.response.News
-import com.example.feature.articles.presentation.activity.presenter.ArticlesPresenter
-import com.example.feature.news.presentation.activity.view.NewsActivity
+import com.example.englishnews.articles.presentation.activity.presenter.ArticlesPresenter
+import com.example.englishnews.news.presentation.activity.view.NewsActivity
 import com.example.base.presentation.activity.BaseActivity
 import com.example.feature.R
 import com.xwray.groupie.GroupAdapter
@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.activity_searchbar.*
 import kotlinx.android.synthetic.main.activity_toolbar_back.*
 import javax.inject.Inject
 
-class ArticlesActivity : BaseActivity(),
-    ArticlesContract.View {
+class ArticlesActivity : BaseActivity(), ArticlesContract.View {
+
     @Inject
     lateinit var mArticlesPresenter: ArticlesPresenter
     @Inject

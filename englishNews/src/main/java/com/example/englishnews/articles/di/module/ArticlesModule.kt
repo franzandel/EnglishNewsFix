@@ -1,8 +1,8 @@
-package com.example.feature.articles.di.module
+package com.example.englishnews.articles.di.module
 
 import com.example.base.di.scope.ActivityScope
-import com.example.base.scheduler.AppSchedulerProvider
-import com.example.feature.articles.presentation.activity.presenter.ArticlesPresenter
+import com.example.base.external.scheduler.AppSchedulerProvider
+import com.example.englishnews.articles.presentation.activity.presenter.ArticlesPresenter
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import dagger.Module

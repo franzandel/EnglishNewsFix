@@ -1,11 +1,11 @@
-package com.example.englishnewsfix.app.di.module.builder
+package com.example.englishnewsfix.di.module.builder
 
 import com.example.base.di.scope.ActivityScope
-import com.example.feature.articles.presentation.activity.view.ArticlesActivity
-import com.example.feature.articles.di.module.ArticlesModule
-import com.example.feature.news.presentation.activity.view.NewsActivity
-import com.example.feature.news.di.module.NewsModule
-import com.example.feature.news.di.module.NewsNetworkModule
+import com.example.englishnews.articles.presentation.activity.view.ArticlesActivity
+import com.example.englishnews.articles.di.module.ArticlesModule
+import com.example.englishnews.news.presentation.activity.view.NewsActivity
+import com.example.englishnews.news.di.module.NewsModule
+import com.example.englishnews.news.di.module.NewsNetworkModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

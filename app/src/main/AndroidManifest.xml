@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".app.EnglishNewsApp"
+        android:name=".EnglishNewsApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name="com.example.feature.news.presentation.activity.view.NewsActivity">
+        <activity android:name="com.example.englishnews.news.presentation.activity.view.NewsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

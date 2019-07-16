@@ -1,8 +1,8 @@
-package com.example.englishnewsfix.app.domain.router
+package com.example.englishnewsfix.router
 
 import android.content.Context
 import android.content.Intent
-import com.example.feature.articles.presentation.activity.view.ArticlesActivity
+import com.example.englishnews.articles.presentation.activity.view.ArticlesActivity
 import com.example.base.presentation.router.ScreenRouter
 
 /**

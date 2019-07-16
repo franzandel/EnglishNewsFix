@@ -1,6 +1,6 @@
 package com.example.base.presentation.presenter
 
-import com.example.base.scheduler.SchedulerProvider
+import com.example.base.external.scheduler.SchedulerProvider
 import com.example.base.presentation.view.BaseView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

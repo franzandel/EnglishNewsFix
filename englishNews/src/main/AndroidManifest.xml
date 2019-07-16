@@ -6,7 +6,7 @@
         android:allowBackup="false"
         tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
 
-        <activity android:name="com.example.feature.articles.presentation.activity.view.ArticlesActivity">
+        <activity android:name="com.example.englishnews.articles.presentation.activity.view.ArticlesActivity">
         </activity>
     </application>
 

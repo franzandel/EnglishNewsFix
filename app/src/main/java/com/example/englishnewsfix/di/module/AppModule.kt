@@ -1,6 +1,6 @@
-package com.example.englishnewsfix.app.di.module
+package com.example.englishnewsfix.di.module
 
-import com.example.englishnewsfix.app.domain.router.ScreenRouterImpl
+import com.example.englishnewsfix.router.ScreenRouterImpl
 import com.example.base.di.module.BaseModule
 import com.example.base.di.scope.AppScope
 import com.example.base.presentation.router.ScreenRouter
